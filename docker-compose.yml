@@ -1,0 +1,20 @@
+version: '3'
+services:
+  ethstat:
+    build: .
+    container_name: ethstat
+    ports:
+      - "3000:3000"
+      
+  influxdb_with_grafana:
+    image: "jjeaby/influxfana"
+    container_name: influxdb_with_grafana
+    ports:
+      - "8086:8086"
+      - "8083:8083"
+      - "3001:3000"
+      - "4000:4000"
+    volumes:
+      - /opt/influxDB:/var/lib/influxdb
+
+  
